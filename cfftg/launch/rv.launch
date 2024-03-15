@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- acquisition arguments -->
+	<arg name="front_foot_length" default='0.18'/>
+	<arg name="rear_foot_length" default='0.11'/>
+	<arg name="foot_width" default='0.17'/>
+	<arg name="dist_origin_foot" default='0.1'/>
+	<arg name="max_step_length" default='0.8'/>
+	<arg name="max_step_height" default='0.4'/>
+	<arg name="ema_coeff" default='0.8'/>
+	<arg name="add_dist" default='0.05'/>
+
+
+	<node name="robotic_vision" pkg="plane_detector" type="robotic_vision" output="screen" required="true">
+		<param name="~front_foot_length" type="double" value="$(arg front_foot_length)"/>
+		<param name="~rear_foot_length" type="double"  value="$(arg rear_foot_length)"/>
+		<param name="~foot_width" type="double" value="$(arg foot_width)"/>
+		<param name="~dist_origin_foot" type="double" value="$(arg dist_origin_foot)"/>
+		<param name="~max_step_length" type="double" value="$(arg max_step_length)"/>
+		<param name="~max_step_height" type="double" value="$(arg max_step_height)"/>
+		<param name="~ema_coeff" type="double" value="$(arg ema_coeff)"/>
+		<param name="~add_dist" type="double" value="$(arg add_dist)"/>
+	</node>
+
+</launch>

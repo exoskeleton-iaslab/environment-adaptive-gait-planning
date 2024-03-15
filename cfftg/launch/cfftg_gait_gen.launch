@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- acquisition arguments -->
+	<arg name="thigh_length" default='0.5'/>
+	<arg name="shin_length" default='0.5'/>
+	<arg name="front_foot_length" default='0.18'/>
+	<arg name="rear_foot_length" default='0.11'/>
+	<arg name="foot_width" default='0.1'/>
+	<arg name="dist_origin_foot" default='0.05'/>
+	<arg name="max_step_length" default='0.7'/>
+	<arg name="max_step_height" default='0.4'/>
+	<arg name="ema_coeff" default='0.9'/>
+	<arg name="step_time" default='4.0'/>
+	<arg name="knee_ang" default='15'/>
+
+
+	<node name="robotic_vision" pkg="plane_detector" type="robotic_vision" output="screen" required="true">
+		<param name="~front_foot_length" type="double" value="$(arg front_foot_length)"/>
+		<param name="~rear_foot_length" type="double"  value="$(arg rear_foot_length)"/>
+		<param name="~foot_width" type="double" value="$(arg foot_width)"/>
+		<param name="~dist_origin_foot" type="double" value="$(arg dist_origin_foot)"/>
+		<param name="~max_step_length" type="double" value="$(arg max_step_length)"/>
+		<param name="~max_step_height" type="double" value="$(arg max_step_height)"/>
+		<param name="~ema_coeff" type="double" value="$(arg ema_coeff)"/>
+	</node>
+	
+	<node name="coord_trans" pkg="plane_detector" type="coord_trans" output="screen" required="true">
+		<param name="~thigh_length" type="double" value="$(arg thigh_length)"/>
+		<param name="~shin_length" type="double"  value="$(arg shin_length)"/>
+	</node>
+	
+	<node name="exo_control" pkg="cfftg" type="exo_control" output="screen" required="true">
+		<param name="~thigh_length" type="double" value="$(arg thigh_length)"/>
+		<param name="~shin_length" type="double"  value="$(arg shin_length)"/>
+		<param name="~front_foot_length" type="double" value="$(arg front_foot_length)"/>
+		<param name="~rear_foot_length" type="double" value="$(arg rear_foot_length)"/>
+		<param name="~step_time" type="double"  value="$(arg step_time)"/>
+		<param name="~knee_ang" type="double"  value="$(arg knee_ang)"/>
+	</node>
+	<node name="slm" pkg="cfftg" type="slm" output="screen" required="true">
+	</node>
+
+</launch>

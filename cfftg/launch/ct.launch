@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- acquisition arguments -->
+	<arg name="thigh_length" default='0.47'/> <!-- Old Measure (Stefano) 0.47 -->
+	<arg name="shin_length" default='0.49'/>
+	<arg name="front_foot_length" default='0.2'/>
+	<arg name="rear_foot_length" default='0.06'/>
+	<arg name="foot_width" default='0.1'/>
+	<arg name="dist_origin_foot" default='0.05'/>
+	<arg name="max_step_length" default='0.7'/>
+	<arg name="max_step_height" default='0.4'/>
+	<arg name="ema_coeff" default='0.9'/>
+	<arg name="step_time" default='4.0'/>
+	<arg name="knee_ang" default='15'/>
+	<arg name="delta_angle_iterative_adjustment" default='0.5'/>
+	<arg name="angle_threshold_iterative_adjustment" default='0.005'/>
+	
+	<node name="coord_trans" pkg="plane_detector" type="coord_trans" output="screen" required="true">
+		<param name="~thigh_length" type="double" value="$(arg thigh_length)"/>
+		<param name="~shin_length" type="double"  value="$(arg shin_length)"/>
+		<param name="~front_foot_length" type="double"  value="$(arg front_foot_length)"/>
+		<param name="~delta_angle_iterative_adjustment" type="double"  value="$(arg delta_angle_iterative_adjustment)"/>
+		<param name="~angle_threshold_iterative_adjustment" type="double"  value="$(arg angle_threshold_iterative_adjustment)"/>
+	</node>
+</launch>

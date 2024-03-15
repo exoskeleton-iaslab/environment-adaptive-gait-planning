@@ -1,0 +1,6 @@
+<launch>
+    <node name="hokuyo0" pkg="urg_node" type="urg_node">
+        <param name="port" type="string" value="/dev/ttyACM0" />
+        <remap from="scan" to="scan0" />
+    </node>
+</launch>

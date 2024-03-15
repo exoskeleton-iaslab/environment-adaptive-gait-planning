@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- acquisition arguments -->
+	<arg name="front_foot_length" default='0.2'/>
+	<arg name="rear_foot_length" default='0.06'/>
+	<arg name="foot_width" default='0.17'/>
+	<arg name="dist_origin_foot" default='0.1'/>
+	<arg name="max_step_length" default='0.8'/>
+	<arg name="max_step_height" default='0.4'/>
+	<arg name="ema_coeff" default='0'/>
+	<arg name="add_dist" default='0.03'/>
+	<arg name="leaf_size" default='0.02'/>
+	<arg name="ransac_max_it" default='1000'/>
+	<arg name="ransac_th" default='0.025'/>
+	<arg name="x_alignment" default='true'/>
+
+	<node name="robotic_vision_v2" pkg="plane_detector" type="robotic_vision_v2" output="screen" required="true">
+		<param name="front_foot_length" type="double" value="$(arg front_foot_length)"/>
+		<param name="rear_foot_length" type="double"  value="$(arg rear_foot_length)"/>
+		<param name="foot_width" type="double" value="$(arg foot_width)"/>
+		<param name="dist_origin_foot" type="double" value="$(arg dist_origin_foot)"/>
+		<param name="max_step_length" type="double" value="$(arg max_step_length)"/>
+		<param name="max_step_height" type="double" value="$(arg max_step_height)"/>
+		<param name="ema_coeff" type="double" value="$(arg ema_coeff)"/>
+		<param name="add_dist" type="double" value="$(arg add_dist)"/>
+		<param name="leaf_size" type="double" value="$(arg leaf_size)"/>
+		<param name="ransac_max_it" type="int" value="$(arg ransac_max_it)"/>
+		<param name="ransac_th" type="double" value="$(arg ransac_th)"/>
+		<param name="x_alignment" type="bool" value="$(arg x_alignment)"/>
+	</node>
+
+</launch>

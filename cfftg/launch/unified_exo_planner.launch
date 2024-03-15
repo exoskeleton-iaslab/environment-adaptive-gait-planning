@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- acquisition arguments -->
+	<arg name="thigh_length" default='0.47'/> <!-- Old Measure (Stefano) 0.47 -->
+	<arg name="shin_length" default='0.49'/>
+	<arg name="front_foot_length" default='0.2'/>
+	<arg name="rear_foot_length" default='0.06'/>
+	<arg name="max_step_length" default='0.7'/>
+	<arg name="max_step_height" default='0.4'/>
+	<arg name="step_time" default='4.0'/>
+	<arg name="knee_ang" default='15'/>
+	<arg name="time_unit" default='0.1'/>
+	<arg name="cfftg_type" default='cubic'/>
+	
+	<arg name="max_it" default='1000'/>
+	<arg name="restart_it" default='50'/>
+	<arg name="min_dist_threshold" default='0.03'/>
+	<arg name="default_sigma_h" default='0.2'/>
+	<arg name="default_sigma_v" default='0.05'/>
+	<arg name="min_sigma_h" default='0.005'/>
+	<arg name="min_sigma_v" default='0.005'/>
+	<arg name="decay_coeff_h" default='4'/>
+	<arg name="decay_coeff_v" default='2'/>
+	<arg name="produce_matrix_file" default='true'/>
+	<arg name="matrix_filename" default='/home/minipc_exo/catkin_ws/iterated_cartesian_trajectories'/>
+	<arg name="obstacle_filename" default='/home/minipc_exo/catkin_ws/obstacles'/>
+	<arg name="cartesian_traj_filename" default='/home/minipc_exo/catkin_ws/cartesian_trajectories'/>
+	<arg name="angular_traj_filename" default='/home/minipc_exo/catkin_ws/angular_trajectories'/>
+	
+
+	
+	<!-- WP FINDER ARGS-->
+	<arg name="wp_min_time_dist" default='0.5'/>
+	<arg name="wp_derivative_threshold" default='0.005'/>
+	<arg name="wp_selector_type" default='uniform_spaced'/>
+	<arg name="wp_strategy_type" default='fixed'/>
+	<!-- CUBIC HIP ADDITIONAL ARGS-->
+	<arg name="hip_max_extension_time_coeff" default='0.5'/>
+	<!-- CUBIC FOOT ADDITIONAL ARGS-->
+	<arg name="foot_peak_time_coeff" default='0.3'/>
+	<!-- CUBIC DOUBLE ADDITIONAL ARGS-->
+	<arg name="foot_peak_time_coeff_2" default='0.7'/>
+	<arg name="joint_velocity" default='60'/>
+	
+	<node name="unified_planner" pkg="cfftg" type="unified_planner" output="screen" required="true">
+		<param name="~thigh_length" type="double" value="$(arg thigh_length)"/>
+		<param name="~shin_length" type="double"  value="$(arg shin_length)"/>
+		<param name="~front_foot_length" type="double" value="$(arg front_foot_length)"/>
+		<param name="~rear_foot_length" type="double" value="$(arg rear_foot_length)"/>
+		<param name="~step_time" type="double"  value="$(arg step_time)"/>
+		<param name="~knee_ang" type="double"  value="$(arg knee_ang)"/>
+		<param name="~hip_max_extension_time_coeff" type="double"  value="$(arg hip_max_extension_time_coeff)"/>
+		<param name="~foot_peak_time_coeff" type="double"  value="$(arg foot_peak_time_coeff)"/>
+		<param name="~foot_peak_time_coeff_2" type="double"  value="$(arg foot_peak_time_coeff_2)"/>
+		<param name="~time_unit" type="double"  value="$(arg time_unit)"/>
+		<param name="~min_dist_threshold" type="double"  value="$(arg min_dist_threshold)"/>
+		
+		<param name="~max_it" type="int"  value="$(arg max_it)"/>
+		<param name="~restart_it" type="int"  value="$(arg restart_it)"/>
+		<param name="~default_sigma_h" type="double"  value="$(arg default_sigma_h)"/>
+		<param name="~default_sigma_v" type="double"  value="$(arg default_sigma_v)"/>
+		<param name="~min_sigma_h" type="double"  value="$(arg min_sigma_h)"/>
+		<param name="~min_sigma_v" type="double"  value="$(arg min_sigma_v)"/>
+		<param name="~decay_coeff_h" type="double"  value="$(arg decay_coeff_h)"/>
+		<param name="~decay_coeff_v" type="double"  value="$(arg decay_coeff_v)"/>
+		<param name="~cfftg_type" type="str"  value="$(arg cfftg_type)"/>
+		<param name="~produce_matrix_file" type="bool"  value="$(arg produce_matrix_file)"/>
+		<param name="~matrix_filename" type="str"  value="$(arg matrix_filename)"/>
+		<param name="~obstacle_filename" type="str"  value="$(arg obstacle_filename)"/>
+		<param name="~cartesian_traj_filename" type="str"  value="$(arg cartesian_traj_filename)"/>
+		<param name="~angular_traj_filename" type="str"  value="$(arg angular_traj_filename)"/>
+		
+		<param name="~wp_min_time_dist" type="double"  value="$(arg wp_min_time_dist)"/>
+		<param name="~joint_velocity" type="double"  value="$(arg joint_velocity)"/>
+		<param name="~wp_derivative_threshold" type="double"  value="$(arg wp_derivative_threshold)"/>
+		<param name="~wp_selector_type" type="str"  value="$(arg wp_selector_type)"/>
+		<param name="~wp_strategy_type" type="str"  value="$(arg wp_strategy_type)"/>
+		
+	</node>
+	
+</launch>
+
