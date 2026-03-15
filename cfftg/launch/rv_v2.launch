@@ -11,7 +11,7 @@
 	<arg name="add_dist" default='0.03'/>
 	<arg name="leaf_size" default='0.02'/>
 	<arg name="ransac_max_it" default='1000'/>
-	<arg name="ransac_th" default='0.025'/>
+	<arg name="ransac_th" default='0.01'/>
 	<arg name="x_alignment" default='true'/>
 
 	<node name="robotic_vision_v2" pkg="plane_detector" type="robotic_vision_v2" output="screen" required="true">
